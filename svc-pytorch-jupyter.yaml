@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-pytorch-jupyter
+  labels:
+    name: svc-pytorch-jupyter
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      name: jupyter
+  selector:
+    name: pytorch-jupyter

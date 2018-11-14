@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: carlos
+  labels:
+    name: carlos
+spec:
+  containers:
+  - name: carlos
+    image: spellrun/pytorch-jupyter
+    ports:
+        - containerPort: 80
+    command:
+    - sleep
+    - infinity
+    volumeMounts:
+        - mountPath: /data
+          name: data
+          subPath: devos
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+  volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: lca4-scratch
